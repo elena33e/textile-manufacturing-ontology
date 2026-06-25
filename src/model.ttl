@@ -1,0 +1,1351 @@
+@prefix : <http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spatial: <http://www.loa-cnr.it/ontologies/SpatialRelations.owl#> .
+@prefix temporal: <http://www.loa-cnr.it/ontologies/TemporalRelations.owl#> .
+@prefix dolce-lite: <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#> .
+@prefix extended-dns: <http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#> .
+@prefix ont-tesut-covoare: <http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#> .
+@base <http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#> .
+
+<http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare> rdf:type owl:Ontology ;
+                                                                            owl:imports <http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl> ,
+                                                                                        <http://www.loa-cnr.it/ontologies/ExtendedDnS.owl> ,
+                                                                                        <http://www.loa-cnr.it/ontologies/SpatialRelations.owl> ,
+                                                                                        <http://www.loa-cnr.it/ontologies/TemporalRelations.owl> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.loa-cnr.it/ontologies/DOLCE-Lite.owl#immediate-relation-i
+dolce-lite:immediate-relation-i rdfs:subPropertyOf dolce-lite:part .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#elimina
+ont-tesut-covoare:elimina rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain ont-tesut-covoare:Curatare ;
+                          rdfs:range ont-tesut-covoare:Impuritate .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#provine
+ont-tesut-covoare:provine rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf owl:topObjectProperty ;
+                          rdfs:domain dolce-lite:amount-of-matter ;
+                          rdfs:range dolce-lite:physical-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#reprezentat-fizic-pe
+ont-tesut-covoare:reprezentat-fizic-pe rdf:type owl:ObjectProperty ;
+                                       rdfs:subPropertyOf dolce-lite:generically-dependent-on ;
+                                       rdfs:domain ont-tesut-covoare:Model ;
+                                       rdfs:range extended-dns:material-artifact ;
+                                       rdfs:comment "Relație care indică faptul că un design/model abstract este reprezentat (desenat, transpus) pe un suport fizic concret." .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#sustine
+ont-tesut-covoare:sustine rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf dolce-lite:weak-connection ;
+                          rdfs:domain ont-tesut-covoare:Razboi ;
+                          rdfs:range ont-tesut-covoare:Tesatura .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#urmeaza
+ont-tesut-covoare:urmeaza rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf extended-dns:references ;
+                          rdfs:domain [ rdf:type owl:Class ;
+                                        owl:unionOf ( ont-tesut-covoare:Extragere
+                                                      ont-tesut-covoare:Vopsire
+                                                    )
+                                      ] ;
+                          rdfs:range ont-tesut-covoare:Reteta .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#AgentSpalare
+ont-tesut-covoare:AgentSpalare rdf:type owl:Class ;
+                               rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#AlegereRazboi
+ont-tesut-covoare:AlegereRazboi rdf:type owl:Class ;
+                                rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Ales
+ont-tesut-covoare:Ales rdf:type owl:Class ;
+                       rdfs:subClassOf ont-tesut-covoare:TehnicaIntroducere .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Animal
+ont-tesut-covoare:Animal rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:agentive-physical-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#AplicareCuloare
+ont-tesut-covoare:AplicareCuloare rdf:type owl:Class ;
+                                  rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Aspect
+ont-tesut-covoare:Aspect rdf:type owl:Class ;
+                         rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Batatura
+ont-tesut-covoare:Batatura rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:material-artifact ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty dolce-lite:specific-constant-constituent-of ;
+                                             owl:allValuesFrom ont-tesut-covoare:Covor
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Batut
+ont-tesut-covoare:Batut rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Bumbac
+ont-tesut-covoare:Bumbac rdf:type owl:Class ;
+                         rdfs:subClassOf ont-tesut-covoare:Fibra .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Canepa
+ont-tesut-covoare:Canepa rdf:type owl:Class ;
+                         rdfs:subClassOf ont-tesut-covoare:Planta .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#CapatCovor
+ont-tesut-covoare:CapatCovor rdf:type owl:Class ;
+                             rdfs:subClassOf dolce-lite:dependent-place ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty dolce-lite:host ;
+                                               owl:someValuesFrom ont-tesut-covoare:CapatCovor
+                                             ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#CartonFizic
+ont-tesut-covoare:CartonFizic rdf:type owl:Class ;
+                              rdfs:subClassOf ont-tesut-covoare:SuportModel ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty dolce-lite:generic-constituent ;
+                                                owl:allValuesFrom ont-tesut-covoare:Hartie
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Chilim
+ont-tesut-covoare:Chilim rdf:type owl:Class ;
+                         rdfs:subClassOf ont-tesut-covoare:TehnicaIntroducere .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#CoajaFruct
+ont-tesut-covoare:CoajaFruct rdf:type owl:Class ;
+                             rdfs:subClassOf ont-tesut-covoare:PartePlanta ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty dolce-lite:part-of ;
+                                               owl:allValuesFrom ont-tesut-covoare:Fruct
+                                             ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#CoajaFructColorant
+ont-tesut-covoare:CoajaFructColorant rdf:type owl:Class ;
+                                     rdfs:subClassOf ont-tesut-covoare:ExtractPlanta .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Colorant
+ont-tesut-covoare:Colorant rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:communication-event ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty extended-dns:played-by ;
+                                             owl:someValuesFrom ont-tesut-covoare:SubstantaColorant
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ColorantNatural
+ont-tesut-covoare:ColorantNatural rdf:type owl:Class ;
+                                  rdfs:subClassOf ont-tesut-covoare:Colorant ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty extended-dns:played-by ;
+                                                    owl:someValuesFrom ont-tesut-covoare:ExtractPlanta
+                                                  ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Colorare
+ont-tesut-covoare:Colorare rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:task ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty extended-dns:defined-by ;
+                                             owl:someValuesFrom ont-tesut-covoare:Reteta
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Copac
+ont-tesut-covoare:Copac rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:Planta .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Covor
+ont-tesut-covoare:Covor rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:Tesatura .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Culoare
+ont-tesut-covoare:Culoare rdf:type owl:Class ;
+                          rdfs:subClassOf dolce-lite:physical-quality ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty dolce-lite:has-quale ;
+                                            owl:allValuesFrom ont-tesut-covoare:Nuanta
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Curatare
+ont-tesut-covoare:Curatare rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Daracit
+ont-tesut-covoare:Daracit rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Daracitor
+ont-tesut-covoare:Daracitor rdf:type owl:Class ;
+                            rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#DaracitorManual
+ont-tesut-covoare:DaracitorManual rdf:type owl:Class ;
+                                  rdfs:subClassOf ont-tesut-covoare:Daracitor .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#DaracitorMecanic
+ont-tesut-covoare:DaracitorMecanic rdf:type owl:Class ;
+                                   rdfs:subClassOf ont-tesut-covoare:Daracitor .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Decor
+ont-tesut-covoare:Decor rdf:type owl:Class ;
+                        rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Desenare
+ont-tesut-covoare:Desenare rdf:type owl:Class ;
+                           rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#DesignCovor
+ont-tesut-covoare:DesignCovor rdf:type owl:Class ;
+                              rdfs:subClassOf extended-dns:constitutive-description ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty extended-dns:defines ;
+                                                owl:someValuesFrom ont-tesut-covoare:GhidVizual
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Desprindere
+ont-tesut-covoare:Desprindere rdf:type owl:Class ;
+                              rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Detergent
+ont-tesut-covoare:Detergent rdf:type owl:Class ;
+                            rdfs:subClassOf ont-tesut-covoare:AgentSpalare .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Dinte
+ont-tesut-covoare:Dinte rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#DinteDaracitor
+ont-tesut-covoare:DinteDaracitor rdf:type owl:Class ;
+                                 rdfs:subClassOf ont-tesut-covoare:Dinte ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty dolce-lite:generic-constituent ;
+                                                   owl:allValuesFrom ont-tesut-covoare:Otel
+                                                 ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#DintePieptene
+ont-tesut-covoare:DintePieptene rdf:type owl:Class ;
+                                rdfs:subClassOf ont-tesut-covoare:Dinte .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ExecutieDecor
+ont-tesut-covoare:ExecutieDecor rdf:type owl:Class ;
+                                rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ExtractPlanta
+ont-tesut-covoare:ExtractPlanta rdf:type owl:Class ;
+                                rdfs:subClassOf ont-tesut-covoare:SubstantaColorant .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Extragere
+ont-tesut-covoare:Extragere rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Femeie
+ont-tesut-covoare:Femeie rdf:type owl:Class ;
+                         rdfs:subClassOf ont-tesut-covoare:Persoana .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Fibra
+ont-tesut-covoare:Fibra rdf:type owl:Class ;
+                        rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#FibraCanepa
+ont-tesut-covoare:FibraCanepa rdf:type owl:Class ;
+                              rdfs:subClassOf ont-tesut-covoare:Fibra ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty ont-tesut-covoare:provine ;
+                                                owl:allValuesFrom ont-tesut-covoare:Canepa
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Fier
+ont-tesut-covoare:Fier rdf:type owl:Class ;
+                       rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Finisare
+ont-tesut-covoare:Finisare rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Fir
+ont-tesut-covoare:Fir rdf:type owl:Class ;
+                      rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#FirTors
+ont-tesut-covoare:FirTors rdf:type owl:Class ;
+                          rdfs:subClassOf ont-tesut-covoare:Fir ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty dolce-lite:has-quality ;
+                                            owl:someValuesFrom ont-tesut-covoare:Procesat
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:parametrized-by ;
+                                            owl:someValuesFrom ont-tesut-covoare:Grosime
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty dolce-lite:specific-constant-constituent-of ;
+                                            owl:allValuesFrom ont-tesut-covoare:Covor
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#FirUrzeala
+ont-tesut-covoare:FirUrzeala rdf:type owl:Class ;
+                             rdfs:subClassOf ont-tesut-covoare:Fir .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#FirVopsit
+ont-tesut-covoare:FirVopsit rdf:type owl:Class ;
+                            rdfs:subClassOf ont-tesut-covoare:Fir ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty dolce-lite:has-quality ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( ont-tesut-covoare:Culoare
+                                                                                        ont-tesut-covoare:Procesat
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#FixareUrzeala
+ont-tesut-covoare:FixareUrzeala rdf:type owl:Class ;
+                                rdfs:subClassOf extended-dns:action ,
+                                                [ rdf:type owl:Restriction ;
+                                                  owl:onProperty dolce-lite:participant ;
+                                                  owl:someValuesFrom [ owl:intersectionOf ( ont-tesut-covoare:Sul
+                                                                                            ont-tesut-covoare:Urzeala
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ]
+                                                ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Foarfeca
+ont-tesut-covoare:Foarfeca rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Forfecare
+ont-tesut-covoare:Forfecare rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Franj
+ont-tesut-covoare:Franj rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Franjurare
+ont-tesut-covoare:Franjurare rdf:type owl:Class ;
+                             rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Fruct
+ont-tesut-covoare:Fruct rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:non-agentive-physical-object ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty dolce-lite:part-of ;
+                                          owl:allValuesFrom ont-tesut-covoare:Planta
+                                        ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Fus
+ont-tesut-covoare:Fus rdf:type owl:Class ;
+                      rdfs:subClassOf ont-tesut-covoare:UnealtaTors .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Gherghef
+ont-tesut-covoare:Gherghef rdf:type owl:Class ;
+                           rdfs:subClassOf ont-tesut-covoare:Razboi ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty ont-tesut-covoare:sustine ;
+                                             owl:someValuesFrom ont-tesut-covoare:Tesatura
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#GhidVizual
+ont-tesut-covoare:GhidVizual rdf:type owl:Class ;
+                             rdfs:subClassOf extended-dns:role ,
+                                             [ rdf:type owl:Restriction ;
+                                               owl:onProperty extended-dns:played-by ;
+                                               owl:someValuesFrom ont-tesut-covoare:ModelCarton
+                                             ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Gros
+ont-tesut-covoare:Gros rdf:type owl:Class ;
+                       rdfs:subClassOf ont-tesut-covoare:Aspect .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Grosime
+ont-tesut-covoare:Grosime rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:parameter ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:valued-by ;
+                                            owl:someValuesFrom ont-tesut-covoare:SpatiuGrosime
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Hartie
+ont-tesut-covoare:Hartie rdf:type owl:Class ;
+                         rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#HartieMilimetrica
+ont-tesut-covoare:HartieMilimetrica rdf:type owl:Class ;
+                                    rdfs:subClassOf ont-tesut-covoare:SuportModel .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Impermeabilitate
+ont-tesut-covoare:Impermeabilitate rdf:type owl:Class ;
+                                   rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Impletire
+ont-tesut-covoare:Impletire rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Impuritate
+ont-tesut-covoare:Impuritate rdf:type owl:Class ;
+                             rdfs:subClassOf extended-dns:non-agentive-physical-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Inflorat
+ont-tesut-covoare:Inflorat rdf:type owl:Class ;
+                           rdfs:subClassOf ont-tesut-covoare:TehnicaIntroducere .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Intindere
+ont-tesut-covoare:Intindere rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:action ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty dolce-lite:participant ;
+                                              owl:someValuesFrom [ owl:intersectionOf ( ont-tesut-covoare:Sul
+                                                                                        ont-tesut-covoare:Urzeala
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ]
+                                            ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#IntroducereBatatura
+ont-tesut-covoare:IntroducereBatatura rdf:type owl:Class ;
+                                      rdfs:subClassOf extended-dns:task ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty extended-dns:defined-by ;
+                                                        owl:someValuesFrom ont-tesut-covoare:TehnicaIntroducere
+                                                      ] ,
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty dolce-lite:part-of ;
+                                                        owl:allValuesFrom ont-tesut-covoare:Tesere
+                                                      ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Lana
+ont-tesut-covoare:Lana rdf:type owl:Class ;
+                       rdfs:subClassOf ont-tesut-covoare:Fibra ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty ont-tesut-covoare:provine ;
+                                         owl:someValuesFrom ont-tesut-covoare:Oaie
+                                       ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#LanaBruta
+ont-tesut-covoare:LanaBruta rdf:type owl:Class ;
+                            rdfs:subClassOf ont-tesut-covoare:Lana ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty dolce-lite:has-quality ;
+                                              owl:someValuesFrom ont-tesut-covoare:Neprocesat
+                                            ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#LanaDaracita
+ont-tesut-covoare:LanaDaracita rdf:type owl:Class ;
+                               rdfs:subClassOf ont-tesut-covoare:Lana ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty dolce-lite:has-quality ;
+                                                 owl:someValuesFrom ont-tesut-covoare:Procesat
+                                               ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Legare
+ont-tesut-covoare:Legare rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Lemn
+ont-tesut-covoare:Lemn rdf:type owl:Class ;
+                       rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Mesterita
+ont-tesut-covoare:Mesterita rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:social-role ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty extended-dns:played-by ;
+                                              owl:allValuesFrom ont-tesut-covoare:Femeie
+                                            ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Model
+ont-tesut-covoare:Model rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:information-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ModelCarton
+ont-tesut-covoare:ModelCarton rdf:type owl:Class ;
+                              rdfs:subClassOf ont-tesut-covoare:Model ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty extended-dns:expresses ;
+                                                owl:someValuesFrom ont-tesut-covoare:DesignCovor
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty extended-dns:ordered-by ;
+                                                owl:someValuesFrom ont-tesut-covoare:DesignCovor
+                                              ] ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty ont-tesut-covoare:reprezentat-fizic-pe ;
+                                                owl:someValuesFrom ont-tesut-covoare:SuportModel
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Montare
+ont-tesut-covoare:Montare rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#MotivCoarneleBerbecului
+ont-tesut-covoare:MotivCoarneleBerbecului rdf:type owl:Class ;
+                                          rdfs:subClassOf ont-tesut-covoare:MotivTraditional .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#MotivCruce
+ont-tesut-covoare:MotivCruce rdf:type owl:Class ;
+                             rdfs:subClassOf ont-tesut-covoare:MotivTraditional .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#MotivPomulVietii
+ont-tesut-covoare:MotivPomulVietii rdf:type owl:Class ;
+                                   rdfs:subClassOf ont-tesut-covoare:MotivTraditional .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#MotivTraditional
+ont-tesut-covoare:MotivTraditional rdf:type owl:Class ;
+                                   rdfs:subClassOf extended-dns:constitutive-description ,
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty extended-dns:defines ;
+                                                     owl:someValuesFrom ont-tesut-covoare:Simbol
+                                                   ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Navadit
+ont-tesut-covoare:Navadit rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:task ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:sequences ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( ont-tesut-covoare:FixareUrzeala
+                                                                                      ont-tesut-covoare:Intindere
+                                                                                      ont-tesut-covoare:Separare
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Neprocesat
+ont-tesut-covoare:Neprocesat rdf:type owl:Class ;
+                             rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Neted
+ont-tesut-covoare:Neted rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:Aspect .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Nod
+ont-tesut-covoare:Nod rdf:type owl:Class ;
+                      rdfs:subClassOf dolce-lite:feature ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty dolce-lite:host ;
+                                        owl:someValuesFrom ont-tesut-covoare:Covor
+                                      ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Nuanta
+ont-tesut-covoare:Nuanta rdf:type owl:Class ;
+                         rdfs:subClassOf dolce-lite:quale .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Oaie
+ont-tesut-covoare:Oaie rdf:type owl:Class ;
+                       rdfs:subClassOf ont-tesut-covoare:Animal .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Otel
+ont-tesut-covoare:Otel rdf:type owl:Class ;
+                       rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#PartePlanta
+ont-tesut-covoare:PartePlanta rdf:type owl:Class ;
+                              rdfs:subClassOf extended-dns:non-agentive-physical-object ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty dolce-lite:part-of ;
+                                                owl:someValuesFrom ont-tesut-covoare:Planta
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Persoana
+ont-tesut-covoare:Persoana rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:rational-physical-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Pieptene
+ont-tesut-covoare:Pieptene rdf:type owl:Class ;
+                           rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Planta
+ont-tesut-covoare:Planta rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:agentive-physical-object .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#PregatireModel
+ont-tesut-covoare:PregatireModel rdf:type owl:Class ;
+                                 rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Procesat
+ont-tesut-covoare:Procesat rdf:type owl:Class ;
+                           rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Pufos
+ont-tesut-covoare:Pufos rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:Aspect .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Radacina
+ont-tesut-covoare:Radacina rdf:type owl:Class ;
+                           rdfs:subClassOf ont-tesut-covoare:PartePlanta ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty dolce-lite:part-of ;
+                                             owl:allValuesFrom ont-tesut-covoare:Planta
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#RadacinaColorant
+ont-tesut-covoare:RadacinaColorant rdf:type owl:Class ;
+                                   rdfs:subClassOf ont-tesut-covoare:ExtractPlanta .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Razboi
+ont-tesut-covoare:Razboi rdf:type owl:Class ;
+                         rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#RealizareMotiv
+ont-tesut-covoare:RealizareMotiv rdf:type owl:Class ;
+                                 rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Relief
+ont-tesut-covoare:Relief rdf:type owl:Class ;
+                         rdfs:subClassOf dolce-lite:feature ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty dolce-lite:host ;
+                                           owl:someValuesFrom ont-tesut-covoare:Covor
+                                         ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Reteta
+ont-tesut-covoare:Reteta rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:plan ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty extended-dns:created-by ;
+                                           owl:allValuesFrom ont-tesut-covoare:Persoana
+                                         ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Rezistenta
+ont-tesut-covoare:Rezistenta rdf:type owl:Class ;
+                             rdfs:subClassOf dolce-lite:physical-quality .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Ridicare
+ont-tesut-covoare:Ridicare rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#RoataTors
+ont-tesut-covoare:RoataTors rdf:type owl:Class ;
+                            rdfs:subClassOf ont-tesut-covoare:UnealtaTors .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Rost
+ont-tesut-covoare:Rost rdf:type owl:Class ;
+                       rdfs:subClassOf dolce-lite:dependent-place ,
+                                       [ rdf:type owl:Restriction ;
+                                         owl:onProperty dolce-lite:host-of ;
+                                         owl:allValuesFrom ont-tesut-covoare:Urzeala
+                                       ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Rulare
+ont-tesut-covoare:Rulare rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Sapun
+ont-tesut-covoare:Sapun rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:AgentSpalare .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Scaun
+ont-tesut-covoare:Scaun rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SchimbareCuloare
+ont-tesut-covoare:SchimbareCuloare rdf:type owl:Class ;
+                                   rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Scoarta
+ont-tesut-covoare:Scoarta rdf:type owl:Class ;
+                          rdfs:subClassOf ont-tesut-covoare:Covor .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ScoartaCopac
+ont-tesut-covoare:ScoartaCopac rdf:type owl:Class ;
+                               rdfs:subClassOf ont-tesut-covoare:PartePlanta ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty dolce-lite:part-of ;
+                                                 owl:allValuesFrom ont-tesut-covoare:Copac
+                                               ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ScoartaCopacColorant
+ont-tesut-covoare:ScoartaCopacColorant rdf:type owl:Class ;
+                                       rdfs:subClassOf ont-tesut-covoare:ExtractPlanta .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Separare
+ont-tesut-covoare:Separare rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:action ,
+                                           [ rdf:type owl:Restriction ;
+                                             owl:onProperty dolce-lite:participant ;
+                                             owl:someValuesFrom ont-tesut-covoare:FirUrzeala
+                                           ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Simbol
+ont-tesut-covoare:Simbol rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:figure .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SimbolCoarneleBerbecului
+ont-tesut-covoare:SimbolCoarneleBerbecului rdf:type owl:Class ;
+                                           rdfs:subClassOf ont-tesut-covoare:Simbol .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SimbolCruce
+ont-tesut-covoare:SimbolCruce rdf:type owl:Class ;
+                              rdfs:subClassOf ont-tesut-covoare:Simbol .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SimbolPomulVietii
+ont-tesut-covoare:SimbolPomulVietii rdf:type owl:Class ;
+                                    rdfs:subClassOf ont-tesut-covoare:Simbol .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Spalare
+ont-tesut-covoare:Spalare rdf:type owl:Class ;
+                          rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Spata
+ont-tesut-covoare:Spata rdf:type owl:Class ;
+                        rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SpatiuCromatic
+ont-tesut-covoare:SpatiuCromatic rdf:type owl:Class ;
+                                 rdfs:subClassOf dolce-lite:quality-space ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty dolce-lite:part ;
+                                                   owl:allValuesFrom ont-tesut-covoare:Nuanta
+                                                 ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SpatiuGrosime
+ont-tesut-covoare:SpatiuGrosime rdf:type owl:Class ;
+                                rdfs:subClassOf dolce-lite:quality-space .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Stalp
+ont-tesut-covoare:Stalp rdf:type owl:Class ;
+                        rdfs:subClassOf extended-dns:material-artifact ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty dolce-lite:generic-constituent ;
+                                          owl:allValuesFrom ont-tesut-covoare:Lemn
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty dolce-lite:proper-part-of ;
+                                          owl:allValuesFrom ont-tesut-covoare:Gherghef
+                                        ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#StratUrzeala
+ont-tesut-covoare:StratUrzeala rdf:type owl:Class ;
+                               rdfs:subClassOf extended-dns:collection ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty extended-dns:member ;
+                                                 owl:allValuesFrom ont-tesut-covoare:FirUrzeala
+                                               ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SubstantaColorant
+ont-tesut-covoare:SubstantaColorant rdf:type owl:Class ;
+                                    rdfs:subClassOf dolce-lite:amount-of-matter .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Subtire
+ont-tesut-covoare:Subtire rdf:type owl:Class ;
+                          rdfs:subClassOf ont-tesut-covoare:Grosime .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Sul
+ont-tesut-covoare:Sul rdf:type owl:Class ;
+                      rdfs:subClassOf extended-dns:material-artifact ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty dolce-lite:generic-constituent ;
+                                        owl:allValuesFrom ont-tesut-covoare:Lemn
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty dolce-lite:proper-part-of ;
+                                        owl:allValuesFrom ont-tesut-covoare:Gherghef
+                                      ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SulInferior
+ont-tesut-covoare:SulInferior rdf:type owl:Class ;
+                              rdfs:subClassOf extended-dns:material-artifact ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty dolce-lite:part-of ;
+                                                owl:allValuesFrom ont-tesut-covoare:Sul
+                                              ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#SuportModel
+ont-tesut-covoare:SuportModel rdf:type owl:Class ;
+                              rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Suveica
+ont-tesut-covoare:Suveica rdf:type owl:Class ;
+                          rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Taiere
+ont-tesut-covoare:Taiere rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#TehnicaIntroducere
+ont-tesut-covoare:TehnicaIntroducere rdf:type owl:Class ;
+                                     rdfs:subClassOf extended-dns:technique .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#TehnicaTesere
+ont-tesut-covoare:TehnicaTesere rdf:type owl:Class ;
+                                rdfs:subClassOf extended-dns:technique .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tesatoare
+ont-tesut-covoare:Tesatoare rdf:type owl:Class ;
+                            rdfs:subClassOf extended-dns:social-role ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty extended-dns:played-by ;
+                                              owl:allValuesFrom ont-tesut-covoare:Femeie
+                                            ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tesatura
+ont-tesut-covoare:Tesatura rdf:type owl:Class ;
+                           rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tesere
+ont-tesut-covoare:Tesere rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tiv
+ont-tesut-covoare:Tiv rdf:type owl:Class ;
+                      rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tivire
+ont-tesut-covoare:Tivire rdf:type owl:Class ;
+                         rdfs:subClassOf extended-dns:action .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tors
+ont-tesut-covoare:Tors rdf:type owl:Class ;
+                       rdfs:subClassOf dolce-lite:process .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Tundere
+ont-tesut-covoare:Tundere rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:task .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#UnealtaTextila
+ont-tesut-covoare:UnealtaTextila rdf:type owl:Class ;
+                                 rdfs:subClassOf extended-dns:material-artifact .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#UnealtaTors
+ont-tesut-covoare:UnealtaTors rdf:type owl:Class ;
+                              rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Urzeala
+ont-tesut-covoare:Urzeala rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:material-artifact ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:component ;
+                                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                                            owl:onClass ont-tesut-covoare:StratUrzeala
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Urzitor
+ont-tesut-covoare:Urzitor rdf:type owl:Class ;
+                          rdfs:subClassOf ont-tesut-covoare:UnealtaTextila .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#Vopsire
+ont-tesut-covoare:Vopsire rdf:type owl:Class ;
+                          rdfs:subClassOf extended-dns:situation ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:satisfies ;
+                                            owl:someValuesFrom ont-tesut-covoare:Reteta
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty extended-dns:setting-for ;
+                                            owl:someValuesFrom [ owl:intersectionOf ( ont-tesut-covoare:AplicareCuloare
+                                                                                      ont-tesut-covoare:Reteta
+                                                                                    ) ;
+                                                                 rdf:type owl:Class
+                                                               ]
+                                          ] .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#ZonaLucru
+ont-tesut-covoare:ZonaLucru rdf:type owl:Class ;
+                            rdfs:subClassOf dolce-lite:space-region .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#NodGhirodes
+ont-tesut-covoare:NodGhirodes rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#NodSenneh
+ont-tesut-covoare:NodSenneh rdf:type owl:NamedIndividual .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+ont-tesut-covoare:x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:s rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:l rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:v rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:f rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:c rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:fv rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:d rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:b rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:e rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:pp rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:ep rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+ont-tesut-covoare:t rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Dărăcitul transformă lâna brută în lână dărăcită" ;
+   rdfs:label "R3" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Daracit ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:LanaBruta ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:b
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:LanaDaracita ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:d
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:b
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> extended-dns:makes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:d
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Procesul de extragere a substanțelor colorante dintr-o parte de plantă are ca rezultat obținerea unui extract vegetal." ;
+   rdfs:label "R8" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Extragere ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:e
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:PartePlanta ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:pp
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:ExtractPlanta ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:ep
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:e ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:pp
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> extended-dns:makes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:e ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:ep
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "In urma toarcerii lanii daracite rezulta firul tors" ;
+   rdfs:label "R6" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Tors ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:LanaDaracita ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:d
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:FirTors ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:t
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:d
+                                                                                      ] ;
+                                                                            rdf:rest rdf:nil
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> extended-dns:makes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:t
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "In procesul de toarcere paricipa  o unealta textila si lana daracita" ;
+   rdfs:label "R2" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Tors ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:UnealtaTextila ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:t
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:LanaDaracita ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:l
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:t
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:l
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "Lana este spalata cu un agent de spalare" ;
+   rdfs:label "R1" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Spalare ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:AgentSpalare ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:s
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Lana ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:l
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:s
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:l
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "In urma vopsirii firului tors cu colorant natural rezulta firul vopsit" ;
+   rdfs:label "R7" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Vopsire ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:v
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:FirTors ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:f
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:ColorantNatural ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:c
+                                                                           ] ;
+                                                                 rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                            rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                        <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:v ;
+                                                                                        <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:f
+                                                                                      ] ;
+                                                                            rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                       rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:v ;
+                                                                                                   <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:c
+                                                                                                 ] ;
+                                                                                       rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                                                  rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:FirVopsit ;
+                                                                                                              <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:fv
+                                                                                                            ] ;
+                                                                                                  rdf:rest rdf:nil
+                                                                                                ]
+                                                                                     ]
+                                                                          ]
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> extended-dns:makes ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:v ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:fv
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "R4" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Daracit ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Daracitor ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:d
+                                                                ] ;
+                                                      rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                                 rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                             <http://www.w3.org/2003/11/swrl#classPredicate> ont-tesut-covoare:Lana ;
+                                                                             <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:l
+                                                                           ] ;
+                                                                 rdf:rest rdf:nil
+                                                               ]
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:d
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#propertyPredicate> dolce-lite:participant ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> ont-tesut-covoare:x ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument2> ont-tesut-covoare:l
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

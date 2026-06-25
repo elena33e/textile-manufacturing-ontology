@@ -1,0 +1,35 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix ex: <http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#> .
+@prefix ext-dns: <http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# 1. Regula pentru Urzeala (Cardinalitate strictă)
+ex:UrzealaShape a sh:NodeShape ;
+    sh:targetClass ex:Urzeala ;
+    sh:property [
+        sh:path ext-dns:component ;
+        sh:class ex:StratUrzeala ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+        sh:message "Eroare: O urzeală trebuie să conțină exact 2 straturi de urzeală." ;
+    ] .
+
+# 2. Regula pentru Vopsire (Obligativitatea existenței unei rețete)
+ex:VopsireShape a sh:NodeShape ;
+    sh:targetClass ex:Vopsire ;
+    sh:property [
+        sh:path ext-dns:satisfies ;
+        sh:class ex:Reteta ;
+        sh:minCount 1 ;
+        sh:message "Eroare: Procesul de vopsire trebuie să facă referire la cel puțin o Rețetă." ;
+    ] .
+
+# 3. Regula pentru Lână (Validarea datelor literale)
+ex:LanaShape a sh:NodeShape ;
+    sh:targetClass ex:Lana ;
+    sh:property [
+        sh:path ex:cantitate ;
+        sh:datatype xsd:decimal ;
+        sh:minExclusive 0 ;
+        sh:message "Eroare: Cantitatea de lână trebuie să fie un număr pozitiv." ;
+    ] .
