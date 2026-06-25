@@ -4,7 +4,7 @@ A formal ontology and comprehensive validation framework for the carpet weaving 
 
 ## Overview
 
-This repository contains a complete knowledge engineering solution for carpet weaving manufacturing. It showcases how to apply semantic modeling principles and rigorous data validation to a real-world manufacturing domain, ensuring data consistency, completeness, and correctness throughout the production process.
+This repository contains a complete knowledge engineering solution for carpet weaving manufacturing. It showcases how to apply semantic modeling principles and rigorous data validation to a real-world manufacturing scenario.
 
 ## Features
 
@@ -22,7 +22,9 @@ textile-manufacturing-ontology/
 ├── ontology/                 # Ontology definitions and models
 ├── validation/               # Validation framework and rules
 ├── data/                     # Sample data and test cases
-└── scripts/                  # Utility scripts (batch and Python)
+├── scripts/                  # Utility scripts (batch and Python)
+├── run_validation.bat        # Windows batch script to run validation
+└── validator.py              # Python validation script
 ```
 
 ## Getting Started
@@ -31,6 +33,7 @@ textile-manufacturing-ontology/
 
 - Python 3.7+
 - pip (Python package installer)
+- Windows (for `.bat` script) or command line terminal for manual execution
 
 ### Installation
 
@@ -49,9 +52,31 @@ pip install -r requirements.txt
 
 ### Running Validation
 
-Execute the validation framework:
+There are two ways to run the validation framework:
+
+#### Option 1: Using the Batch Script (Windows)
+
+Simply double-click or run the `run_validation.bat` file:
 ```bash
-python validate.py
+run_validation.bat
+```
+
+This script will:
+1. Automatically install all dependencies from `requirements.txt`
+2. Execute the SHACL validation with `validator.py`
+3. Display results and wait for user input before closing
+
+#### Option 2: Manual Python Execution
+
+Run the validation script directly:
+```bash
+python validator.py
+```
+
+Or install dependencies first:
+```bash
+pip install -r requirements.txt
+python validator.py
 ```
 
 ### Exploring the Ontology
