@@ -18,9 +18,9 @@ def ruleaza_validarea(data_file, shapes_file):
     )
 
     if conforms:
-        print("✅ VALIDARE REUȘITĂ: Datele sunt conforme.")
+        print("VALIDARE REUȘITĂ: Datele sunt conforme.")
     else:
-        print("❌ VALIDARE EȘUATĂ: S-au găsit următoarele încălcări:")
+        print("VALIDARE EȘUATĂ: S-au găsit următoarele încălcări:")
         print(results_text)
         sys.exit(1) # Cod de ieșire pentru sisteme de CI/CD
 
