@@ -1,0 +1,24 @@
+@prefix ex: <http://www.semanticweb.org/elena/ontologies/2025/11/proces-tesut-covoare#> .
+@prefix ext-dns: <http://www.loa-cnr.it/ontologies/ExtendedDnS.owl#> .
+
+# 1. Scenariu VALID pentru Urzeala
+ex:UrzealaCorecta a ex:Urzeala ;
+    ext-dns:component ex:Strat1, ex:Strat2 .
+
+ex:Strat1 a ex:StratUrzeala .
+ex:Strat2 a ex:StratUrzeala .
+
+# 2. Scenariu INVALID pentru Urzeala
+ex:UrzealaGresita a ex:Urzeala ;
+    ext-dns:component ex:Strat3 .
+
+ex:Strat3 a ex:StratUrzeala .
+
+# 3. Scenariu VALID pentru Vopsire
+ex:VopsireCorecta a ex:Vopsire ;
+    ext-dns:satisfies ex:Reteta1 .
+
+ex:Reteta1 a ex:Reteta .
+
+# 4. Scenariu INVALID pentru Vopsire
+ex:VopsireGresita a ex:Vopsire .
