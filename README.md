@@ -9,23 +9,10 @@ This repository contains a complete knowledge engineering solution for carpet we
 ## Features
 
 - **Formal Ontology**: A structured knowledge representation of the carpet weaving process, including entities, relationships, and constraints
-- **Validation Framework**: Comprehensive validation rules to ensure data quality and consistency
+- **Validation Framework**: Validation rules to ensure data quality and consistency
 - **Semantic Modeling**: Well-defined concepts and relationships in the textile manufacturing domain
 - **Real-World Application**: Practical implementation demonstrating knowledge engineering best practices
 
-## Repository Structure
-
-```
-textile-manufacturing-ontology/
-├── README.md                 # This file
-├── requirements.txt          # Python dependencies
-├── ontology/                 # Ontology definitions and models
-├── validation/               # Validation framework and rules
-├── data/                     # Sample data and test cases
-├── scripts/                  # Utility scripts (batch and Python)
-├── run_validation.bat        # Windows batch script to run validation
-└── validator.py              # Python validation script
-```
 
 ## Getting Started
 
@@ -77,18 +64,6 @@ Or install dependencies first:
 ```bash
 pip install -r requirements.txt
 python validator.py
-```
-
-### Exploring the Ontology
-
-Load and query the ontology:
-```python
-from ontology import load_ontology
-
-# Load the carpet weaving ontology
-ontology = load_ontology()
-
-# Query entities, relationships, and properties
 ```
 
 ## Technology Stack
